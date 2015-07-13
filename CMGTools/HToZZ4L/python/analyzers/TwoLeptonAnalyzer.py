@@ -44,13 +44,30 @@ class TwoLeptonAnalyzer( Analyzer ):
         for pair in event.isolatedPairs:
             self.counters.counter('TwoLepton').inc('pass iso')
 
+        massCutPairs = []
+        for pair in event.isolatedPairs:
+            if pair.mass() > 40:
+                massCutPairs.append(pair)
+                pair.mass2 = pair.mass() ** 2
+        
+
         # get the best Z (mass closest to PDG value)
         # still a list, because if there's no isolated leptons it may be empty
-        sortedIsoPairs = event.isolatedPairs[:] # make a copy
+        sortedIsoPairs = massCutPairs[:] # make a copy
         sortedIsoPairs.sort(key = lambda dilep : abs(dilep.mass() - 91.1876))
         event.bestIsoZ = sortedIsoPairs[:1] # pick at most 1
         if len(event.bestIsoZ):
             self.counters.counter('TwoLepton').inc('best Z')
+
+        for lep in event.selectedLeptons:
+            print self.leptonPtErr(lep)
+
+    def leptonPtErr(self, lepton):
+        if abs(lepton.pdgId()) == 13:
+            lepton.ptErr = lepton.bestTrack().ptError()
+        elif abs(lepton.pdgId()) == 11:
+            lepton.ptErr = lepton.p4Error(lepton.candidateP4Kind()) #*lepton.pt()/lepton.p()
+        return lepton.ptErr
 
     def leptonID_tight(self,lepton):
         return lepton.tightId()

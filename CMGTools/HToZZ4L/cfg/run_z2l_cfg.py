@@ -56,9 +56,10 @@ sequence = cfg.Sequence([
 #-------- SAMPLES AND TRIGGERS -----------
 from CMGTools.HToZZ4L.samples.samples_13TeV_Spring15 import *
 selectedComponents = mcSamples + dataSamples
-selectedComponents = [ DYJetsToLL_M50, SingleMu_742 ]
+selectedComponents = [DoubleMu_742, DoubleElectronZ_742] #[ DYJetsToLL_M50, ] # SingleMu_742 ]
 for comp in mcSamples:
-    comp.triggers = triggers_1mu_iso
+    #comp.triggers = triggers_1mu_iso
+    comp.triggers = [triggers_mumu_8TeV, triggers_ee_8TeV]
     comp.vetoTriggers = []
 
 from PhysicsTools.HeppyCore.framework.heppy import getHeppyOption
