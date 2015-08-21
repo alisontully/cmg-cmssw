@@ -8,9 +8,9 @@ leptonTypeHZZ = NTupleObjectType("leptonHZZ", baseObjectTypes = [ leptonTypeExtr
     NTupleVariable("neutralHadIso04",   lambda x : x.neutralHadronIsoR(0.4),   help="PF Abs Iso, R=0.4, neutral hadrons only"),
     NTupleVariable("photonIso04",       lambda x : x.photonIsoR(0.4),          help="PF Abs Iso, R=0.4, photons only"),
     NTupleVariable("puChargedHadIso04", lambda x : x.puChargedHadronIsoR(0.4), help="PF Abs Iso, R=0.4, pileup charged hadrons only"),
-    NTupleVariable("rho",               lambda x : x.rho,                             help="rho for isolation"),
-    NTupleVariable("EffectiveArea04",   lambda x : x.EffectiveArea04,                 help="EA for isolation"),
-    NTupleVariable("ptErr",   lambda x : x.ptErr, help="Lepton p_{T} error"),
+    NTupleVariable("rho",               lambda x : x.rho,                      help="rho for isolation"),
+    NTupleVariable("EffectiveArea04",   lambda x : x.EffectiveArea04,          help="EA for isolation"),
+    NTupleVariable("ptErr",             lambda x : x.ptErr(),                  help="Lepton p_{T} error"),
 ])
 
 fsrPhotonTypeHZZ = NTupleObjectType("fsrPhotonHZZ", baseObjectTypes = [ particleType ], variables = [
@@ -53,6 +53,7 @@ ZZType = NTupleObjectType("ZZType", baseObjectTypes=[fourVectorType], variables 
     NTupleVariable("MELAcostheta2", lambda x : x.melaAngles.costheta2 if hasattr(x,'melaAngles') else -99.0, help="MELA angle costheta2"),
     NTupleVariable("MELAphi", lambda x : x.melaAngles.phi if hasattr(x,'melaAngles') else -99.0, help="MELA angle phi"),
     NTupleVariable("MELAphistar1", lambda x : x.melaAngles.phistar1 if hasattr(x,'melaAngles') else -99.0, help="MELA angle phistar1"),
+    NTupleVariable("delta_m", lambda x : x.delta_m(), help="Per event mass resolution"),
 
 ])
 
@@ -65,6 +66,7 @@ ZType = NTupleObjectType("ZType", baseObjectTypes=[fourVectorType], variables = 
     NTupleVariable("pho_pt",  lambda x : (x.fsrPhoton.pt()  if x.hasFSR() else -99.0) ),
     NTupleVariable("pho_eta", lambda x : (x.fsrPhoton.eta() if x.hasFSR() else -99.0) ),
     NTupleVariable("pho_phi", lambda x : (x.fsrPhoton.phi() if x.hasFSR() else -99.0) ),
+    NTupleVariable("delta_m", lambda x : x.delta_m(), help="Per event mass resolution"),
 ])
 
 
