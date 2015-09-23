@@ -273,7 +273,7 @@ int main(int argc, char *argv[])
     /************************** Save results to file **************************/
     
     std::ofstream fitresult;
-    fitresult.open(TString("fitresult"+detector_location+"_data_"+lepName+".txt"));
+    fitresult.open(TString("fitresult"+detector_location+"_"+dataType+"_"+lepName+".txt"));
     
     // Print results
     for (int i=0; i<nCuts; i++) {
