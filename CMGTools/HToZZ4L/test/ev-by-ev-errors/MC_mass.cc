@@ -106,14 +106,14 @@ int main(int argc, char *argv[])
     
     // Read vector of cut strings
     std::vector<std::string> cutString(nCuts);
-    std::ifstream input_cuts(TString("Cuts/cutString"+detector_location+"_"+lepName+".txt"));
+    std::ifstream input_cuts(TString("Cuts/cutString_MC"+detector_location+"_"+lepName+".txt"));
     for (int i=0; i<nCuts; i++) {
         std::getline(input_cuts, cutString[i]);
     }
     
     // Read vector of cut values
     std::vector<double> cutVal(nCuts);
-    std::ifstream input_cutVal(TString("Cuts/cutVal"+detector_location+"_"+lepName+".txt"));
+    std::ifstream input_cutVal(TString("Cuts/cutVal_MC"+detector_location+"_"+lepName+".txt"));
     for (int i=0; i<nCuts; i++) {
         input_cutVal >> cutVal[i];
     }
