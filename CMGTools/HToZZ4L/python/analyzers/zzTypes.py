@@ -53,7 +53,7 @@ ZZType = NTupleObjectType("ZZType", baseObjectTypes=[fourVectorType], variables 
     NTupleVariable("MELAcostheta2", lambda x : x.melaAngles.costheta2 if hasattr(x,'melaAngles') else -99.0, help="MELA angle costheta2"),
     NTupleVariable("MELAphi", lambda x : x.melaAngles.phi if hasattr(x,'melaAngles') else -99.0, help="MELA angle phi"),
     NTupleVariable("MELAphistar1", lambda x : x.melaAngles.phistar1 if hasattr(x,'melaAngles') else -99.0, help="MELA angle phistar1"),
-
+    NTupleVariable("delta_m", lambda x : x.delta_m(), help="Per event mass resolution"),
 ])
 
 
@@ -65,6 +65,7 @@ ZType = NTupleObjectType("ZType", baseObjectTypes=[fourVectorType], variables = 
     NTupleVariable("pho_pt",  lambda x : (x.fsrPhoton.pt()  if x.hasFSR() else -99.0) ),
     NTupleVariable("pho_eta", lambda x : (x.fsrPhoton.eta() if x.hasFSR() else -99.0) ),
     NTupleVariable("pho_phi", lambda x : (x.fsrPhoton.phi() if x.hasFSR() else -99.0) ),
+    NTupleVariable("delta_m", lambda x : x.delta_m(), help="Per event mass resolution"),
 ])
 
 
