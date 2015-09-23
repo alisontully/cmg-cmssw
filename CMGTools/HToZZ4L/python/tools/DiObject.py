@@ -1,5 +1,6 @@
 from ROOT import TLorentzVector
 from math import pi,acos,asin
+import numpy
 from PhysicsTools.HeppyCore.utils.deltar import deltaR, deltaPhi
 
 class DiObject( TLorentzVector ):
