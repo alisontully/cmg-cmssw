@@ -145,14 +145,14 @@ int main(int argc, char *argv[])
     
     // Save cut values and strings to file
     std::ofstream cutString_file;
-    cutString_file.open(TString("Cuts/cutString"+detector_location+"_"+lepName+".txt"));
+    cutString_file.open(TString("Cuts/cutString_"+dataType+""+detector_location+"_"+lepName+".txt"));
     for (int i=0; i<nCuts; i++) {
         cutString_file << cutString[i] << std::endl;
     }
     cutString_file.close();
     
     std::ofstream cutVal_file;
-    cutVal_file.open(TString("Cuts/cutVal"+detector_location+"_"+lepName+".txt"));
+    cutVal_file.open(TString("Cuts/cutVal_"+dataType+""+detector_location+"_"+lepName+".txt"));
     for (int i=0; i<nCuts; i++) {
         cutVal_file << cutVal[i] << std::endl;
     }
