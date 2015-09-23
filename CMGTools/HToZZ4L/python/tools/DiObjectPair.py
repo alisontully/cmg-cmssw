@@ -1,4 +1,5 @@
 from ROOT import TLorentzVector
+import numpy
 from CMGTools.HToZZ4L.tools.DiObject import DiObject
 class DiObjectPair( TLorentzVector ):
     '''Class used for A->VV'''
