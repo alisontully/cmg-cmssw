@@ -10,7 +10,7 @@ leptonTypeHZZ = NTupleObjectType("leptonHZZ", baseObjectTypes = [ leptonTypeExtr
     NTupleVariable("puChargedHadIso04", lambda x : x.puChargedHadronIsoR(0.4), help="PF Abs Iso, R=0.4, pileup charged hadrons only"),
     NTupleVariable("rho",               lambda x : x.rho,                             help="rho for isolation"),
     NTupleVariable("EffectiveArea04",   lambda x : x.EffectiveArea04,                 help="EA for isolation"),
-    NTupleVariable("ptErr",   lambda x : x.ptErr, help="Lepton p_{T} error"),
+    NTupleVariable("ptErr",   lambda x : x.ptErr(), help="Lepton p_{T} error"),
 ])
 
 fsrPhotonTypeHZZ = NTupleObjectType("fsrPhotonHZZ", baseObjectTypes = [ particleType ], variables = [
