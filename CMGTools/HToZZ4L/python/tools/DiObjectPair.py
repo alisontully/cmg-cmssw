@@ -107,7 +107,7 @@ class DiObjectPair( TLorentzVector ):
         return self.leg1.daughterPhotons()+self.leg2.daughterPhotons()
 
     def delta_m(self):
-        JCJ=0
+        JCJ =0
         for lep in self.daughterLeptons():
             e = (lep.p() ** 2 + lep.mass() ** 2) ** 0.5
             px = lep.px()
@@ -115,19 +115,19 @@ class DiObjectPair( TLorentzVector ):
             pz = lep.pz()
             p = lep.p()
             pt = lep.pt()
-            ptErr = self.leptonPtErr(lep)
-            
+            ptErr = lep.ptErr()
+
             Jacobian = numpy.array([-2*self.px(), -2*self.py(), -2*self.pz(), 2*self.energy()])
             Covariance = numpy.zeros((4,4))
             p_i = numpy.array([px, py, pz])
-            
+
             for i in range(0,3):
                 for j in range(0,3):
                     Covariance[i,j] = p_i[i] * p_i[j] * ((ptErr/pt) ** 2)
                 Covariance[i,3] = p_i[i] * ((ptErr*p/pt)**2)/e
                 Covariance[3,i] = Covariance[i,3]
             Covariance[3,3] = (p*p*ptErr/(e*pt))**2
-            
+
             for n in range (0,4):
                 for m in range (0,4):
                     JCJ = JCJ + Jacobian[m] * Covariance[m,n] * Jacobian[n]
